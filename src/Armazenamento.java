@@ -30,6 +30,7 @@ public class Armazenamento {
 	}
 	
 	public Set<String> getPontos(String usuario) {
+		validacaoDados(usuario);
 		usuario = formata(usuario);
 		return lista.get(usuario).keySet();
 	}
@@ -42,6 +43,11 @@ public class Armazenamento {
 	
 	public Set<String> getUsuarios() {
 		return lista.keySet();
+	}
+	
+	private void validacaoDados(String usuario) {
+		if(usuario == null || usuario == "" || !lista.containsKey(formata(usuario)))
+			throw new UserException();
 	}
 	
 	private void validacaoDados(String usuario, String tipo, int pontos) {

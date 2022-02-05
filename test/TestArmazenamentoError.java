@@ -51,4 +51,22 @@ class TestArmazenamentoError {
 		}catch(PontosException e) {}
 	}
 
+	@Test
+	void pontosUsuarioInezistente() {
+		a.setPontos("guerra", "estrela");
+		try{
+			a.getPontos("paz");
+			fail("Aceitou usuario invalido");
+		}catch (UserException e) {}
+
+		try{
+			a.getPontos("");
+			fail("Aceitou usuario invalido");
+		}catch (UserException e) {}
+		
+		try{
+			a.getPontos(null);
+			fail("Aceitou usuario invalido");
+		}catch (UserException e) {}
+	}
 }
