@@ -31,14 +31,16 @@ public class Armazenamento {
 	
 	public Set<String> getPontos(String usuario) {
 		validacaoDados(usuario);
-		usuario = formata(usuario);
-		return lista.get(usuario).keySet();
+		return lista.get(formata(usuario)).keySet();
 	}
 	
 	public int getPontos(String usuario, String tipo) {
+		validacaoDados(usuario);
 		usuario = formata(usuario);
 		tipo = formata(tipo);
-		return lista.get(usuario).get(tipo);
+		if(lista.get(usuario).containsKey(tipo))
+			return lista.get(usuario).get(tipo);
+		return 0;
 	}
 	
 	public Set<String> getUsuarios() {
