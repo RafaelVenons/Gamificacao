@@ -48,12 +48,12 @@ public class Armazenamento {
 	}
 	
 	private void validacaoDados(String usuario) {
-		if(usuario == null || usuario == "" || !lista.containsKey(formata(usuario)))
+		if(usuario == null || usuario.strip() == "" || !lista.containsKey(formata(usuario)))
 			throw new UserException();
 	}
 	
 	private void validacaoDados(String usuario, String tipo, int pontos) {
-		if(usuario == null || usuario == "")
+		if(usuario == null || usuario.strip() == "")
 			throw new UserException();
 		if(tipo == null || tipo == "")
 			throw new TipeException();

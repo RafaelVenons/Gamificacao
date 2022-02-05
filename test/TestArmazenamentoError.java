@@ -17,6 +17,10 @@ class TestArmazenamentoError {
 			a.setPontos("", "estrela");
 			fail("Aceitou usuario vazio");
 		}catch(UserException e) {}
+		try {
+			a.setPontos("  ", "estrela");
+			fail("Aceitou usuario vazio");
+		}catch(UserException e) {}
 	}
 	
 	@Test
