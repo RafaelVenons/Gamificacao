@@ -17,6 +17,9 @@ public class Armazenamento {
 	public void setPontos(String usuario, String tipo, int pontos) {
 		validacaoDados(usuario, tipo, pontos);
 		
+		usuario = formata(usuario);
+		tipo = formata(tipo);
+				
 		if(usuarioNovo(usuario)) {
 			novoUsuario(usuario, tipo, pontos);
 		} else if(possuiPontos(usuario, tipo)) {
@@ -27,10 +30,13 @@ public class Armazenamento {
 	}
 	
 	public Set<String> getPontos(String usuario) {
+		usuario = formata(usuario);
 		return lista.get(usuario).keySet();
 	}
 	
 	public int getPontos(String usuario, String tipo) {
+		usuario = formata(usuario);
+		tipo = formata(tipo);
 		return lista.get(usuario).get(tipo);
 	}
 	
@@ -67,5 +73,11 @@ public class Armazenamento {
 	
 	private void novoPonto(String usuario, String tipo, int pontos){
 		lista.get(usuario).put(tipo, pontos);
+	}
+	
+	private String formata(String original) {
+		char c[] = original.strip().toLowerCase().toCharArray();
+		c[0] = Character.toUpperCase(c[0]);
+		return new String(c);
 	}
 }

@@ -50,8 +50,8 @@ class TestArmazenamento {
 		a.setPontos("guerra", "estrela");
 		a.setPontos("paz", "estrela");
 		Set<String> s = new HashSet<>();
-		s.add("paz");
-		s.add("guerra");
+		s.add("Paz");
+		s.add("Guerra");
 		assertEquals(s, a.getUsuarios());
 	}
 	
@@ -60,8 +60,17 @@ class TestArmazenamento {
 		a.setPontos("guerra", "estrela");
 		a.setPontos("guerra", "moeda");
 		Set<String> s = new HashSet<>();
-		s.add("estrela");
-		s.add("moeda");
+		s.add("Estrela");
+		s.add("Moeda");
 		assertEquals(s, a.getPontos("guerra"));
+	}
+	
+	@Test
+	void noCaseSensitive() {
+		a.setPontos("Guerra", "Estrela");
+		a.setPontos("guerra", "estrela");
+		a.setPontos("GUERRA", "ESTRELA  ");
+		a.setPontos("gUERRA  ", "eSTRELA");
+		assertEquals(4, a.getPontos("guerra", "estrela"));
 	}
 }
