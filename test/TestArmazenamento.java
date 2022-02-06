@@ -1,6 +1,10 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -40,9 +44,9 @@ class TestArmazenamento {
 	@Test
 	void pontosDiferentes() {
 		a.setPontos("guerra", "estrela");
-		a.setPontos("guerra", "moeda");
+		a.setPontos("guerra", "moeda",10);
 		assertEquals(1, a.getPontos("guerra", "estrela"));
-		assertEquals(1, a.getPontos("guerra", "moeda"));
+		assertEquals(10, a.getPontos("guerra", "moeda"));
 	}
 	
 	@Test
@@ -78,9 +82,32 @@ class TestArmazenamento {
 	@Test
 	void noCaseSensitive() {
 		a.setPontos("Guerra", "Estrela");
-		a.setPontos("guerra", "estrela");
-		a.setPontos("GUERRA", "ESTRELA  ");
-		a.setPontos("gUERRA  ", "eSTRELA");
+		a.setPontos("guerra  ", "estrela  ");
+		a.setPontos("  GUERRA", "  ESTRELA");
+		a.setPontos("  gUERRA  ", "  eSTRELA  ");
 		assertEquals(4, a.getPontos("guerra", "estrela"));
+	}
+	
+	@Test
+	void estruturaPontos() {
+		a.setPontos("guerra", "estrela");
+		a.setPontos("guerra", "moeda", 10);
+		Map<String, Integer> m = new HashMap<>();
+		m.put("Estrela", 1);
+		m.put("Moeda", 10);
+		assertEquals(m, a.getEstruturaPontos("guerra"));
+	}
+	
+	@Test
+	void estruturaTipo() {
+		a.setPontos("guerra", "estrela");
+		a.setPontos("paz", "estrela", 5);
+		a.setPontos("guerra", "moeda", 10);
+		List<Ponto> l = new ArrayList<>();
+		l.add(new Ponto("Guerra", "Estrela", 1));
+		l.add(new Ponto("Paz", "Estrela", 5));
+		for(Ponto p : a.getEstruturaTipo("estrela")) {
+			assertTrue(l.contains(p));
+		}
 	}
 }

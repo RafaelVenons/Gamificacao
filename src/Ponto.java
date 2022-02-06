@@ -16,7 +16,7 @@ public class Ponto implements Comparable<Ponto> {
 	public int compareTo(Ponto p) {
 		if(!this.tipo.equals(p.getTipo()))
 			throw new TipeException();
-		return p.getPonto() - this.pontos;
+		return p.getPontos() - this.pontos;
 	}
 	
 	public String getUsuario() {
@@ -27,7 +27,7 @@ public class Ponto implements Comparable<Ponto> {
 		return tipo;
 	}
 	
-	public int getPonto() {
+	public int getPontos() {
 		return pontos;
 	}
 
@@ -38,5 +38,14 @@ public class Ponto implements Comparable<Ponto> {
 	@Override
 	public String toString() {
 		return usuario + " tem " + pontos + " do tipo " + tipo;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Ponto p = (Ponto) o;
+		if(!this.usuario.equals(p.getUsuario())) return false;
+		if(!this.tipo.equals(p.getTipo())) return false;
+		if(this.pontos != p.getPontos()) return false;
+		return true;
 	}
 }

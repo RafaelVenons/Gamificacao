@@ -42,7 +42,7 @@ public class Armazenamento implements ArmazenamentoInterface {
 
 	@Override
 	public Map<String, Integer> getEstruturaPontos(String usuario) {
-		return lista.get(usuario);
+		return lista.get(formata(usuario));
 	}
 	
 	@Override
