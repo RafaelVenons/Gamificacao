@@ -62,6 +62,16 @@ class TestArmazenamento {
 		Set<String> s = new HashSet<>();
 		s.add("Estrela");
 		s.add("Moeda");
+		assertEquals(s, a.getTipoPontos("guerra"));
+	}
+	
+	@Test
+	void retornaPontos() {
+		a.setPontos("guerra", "estrela");
+		a.setPontos("guerra", "moeda");
+		Set<String> s = new HashSet<>();
+		s.add("Estrela -> 1");
+		s.add("Moeda -> 1");
 		assertEquals(s, a.getPontos("guerra"));
 	}
 	

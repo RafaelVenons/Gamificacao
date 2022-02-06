@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,9 +30,19 @@ public class Armazenamento {
 		}
 	}
 	
-	public Set<String> getPontos(String usuario) {
+	public Set<String> getTipoPontos(String usuario) {
 		validacaoDados(usuario);
 		return lista.get(formata(usuario)).keySet();
+	}
+	
+	public Set<String> getPontos(String usuario) {
+		validacaoDados(usuario);
+		Set<String> set = new HashSet<>();
+		lista.get(formata(usuario)).keySet().forEach(ponto -> {
+			ponto = ponto + " -> " + getPontos(usuario, ponto);
+			set.add(ponto);
+		});
+		return set;
 	}
 	
 	public int getPontos(String usuario, String tipo) {
