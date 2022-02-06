@@ -31,6 +31,10 @@ public class Ponto implements Comparable<Ponto> {
 		return pontos;
 	}
 
+	public String ranking(int i) {
+		return i + "º - " + usuario + " -> " + pontos;
+	}
+	
 	@Override
 	public String toString() {
 		return usuario + " tem " + pontos + " do tipo " + tipo;

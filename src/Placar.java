@@ -29,8 +29,7 @@ public class Placar {
 		List<String> lista = new ArrayList<>();
 		int i = 1;
 		for(Ponto p : dados) {
-			lista.add(i+"º - "+p.getUsuario()+" -> "+ p.getPonto());
-			i++;
+			lista.add(p.ranking(i++));
 		}
 		return lista;
 	}
