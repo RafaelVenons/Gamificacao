@@ -3,9 +3,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Armazenamento implements EstruturaUsuarioTipoValor {
+public class Armazenamento implements ArmazenamentoInterface {
 	
-	Map<String, Map<String, Integer>> lista;
+	private Map<String, Map<String, Integer>> lista;
 	
 	Armazenamento(){
 		lista = new HashMap<String, Map<String, Integer>>();

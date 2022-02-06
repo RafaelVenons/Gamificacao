@@ -1,6 +1,6 @@
 import java.util.Set;
 
-public interface EstruturaUsuarioTipoValor {
+public interface ArmazenamentoInterface {
 	
 	public void setPontos(String usuario, String tipo);
 	
