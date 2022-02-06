@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Armazenamento {
+public class Armazenamento implements EstruturaKeyKeyValue {
 	
 	Map<String, Map<String, Integer>> lista;
 	
@@ -11,10 +11,12 @@ public class Armazenamento {
 		lista = new HashMap<String, Map<String, Integer>>();
 	}
 	
+	@Override
 	public void setPontos(String usuario, String tipo) {
 		setPontos(usuario, tipo, 1);
 	}
-	
+
+	@Override
 	public void setPontos(String usuario, String tipo, int pontos) {
 		validacaoDados(usuario, tipo, pontos);
 		
@@ -29,12 +31,14 @@ public class Armazenamento {
 			novoPonto(usuario, tipo, pontos);
 		}
 	}
-	
+
+	@Override
 	public Set<String> getTipoPontos(String usuario) {
 		validacaoDados(usuario);
 		return lista.get(formata(usuario)).keySet();
 	}
-	
+
+	@Override
 	public Set<String> getPontos(String usuario) {
 		validacaoDados(usuario);
 		Set<String> set = new HashSet<>();
@@ -44,7 +48,8 @@ public class Armazenamento {
 		});
 		return set;
 	}
-	
+
+	@Override
 	public int getPontos(String usuario, String tipo) {
 		validacaoDados(usuario);
 		usuario = formata(usuario);
@@ -53,7 +58,8 @@ public class Armazenamento {
 			return lista.get(usuario).get(tipo);
 		return 0;
 	}
-	
+
+	@Override
 	public Set<String> getUsuarios() {
 		return lista.keySet();
 	}
