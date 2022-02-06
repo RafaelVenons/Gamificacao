@@ -42,11 +42,13 @@ public class Armazenamento implements ArmazenamentoInterface {
 
 	@Override
 	public Map<String, Integer> getEstruturaPontos(String usuario) {
+		validacaoDados(usuario);
 		return lista.get(formata(usuario));
 	}
 	
 	@Override
 	public List<Ponto> getEstruturaTipo(String tipo) {
+		validacaoTipo(tipo);
 		tipo = formata(tipo);
 		List<Ponto> l = new ArrayList<>();
 		for(String usuario : lista.keySet()) {
@@ -80,6 +82,11 @@ public class Armazenamento implements ArmazenamentoInterface {
 	@Override
 	public Set<String> getUsuarios() {
 		return lista.keySet();
+	}
+	
+	private void validacaoTipo(String tipo) {
+		if(tipo == null || tipo.strip() == "")
+			throw new TipeException();
 	}
 	
 	private void validacaoDados(String usuario) {
