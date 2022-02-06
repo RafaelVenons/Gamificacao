@@ -18,5 +18,11 @@ class TestPlacar {
 		p.setPontos("guerra", "estrela");
 		e.assertEquals("guerra", "estrela", 1);
 	}
+	
+	@Test
+	void variosPontos() {
+		p.setPontos("guerra", "estrela", 10);
+		e.assertEquals("guerra", "estrela", 10);
+	}
 
 }

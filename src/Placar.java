@@ -6,8 +6,12 @@ public class Placar {
 		this.e = e;
 	}
 
-	public void setPontos(String string, String string2) {
-		e.setPontos(string, string2);
+	public void setPontos(String usuario, String tipo) {
+		e.setPontos(usuario, tipo);
+	}
+
+	public void setPontos(String usuario, String tipo, int pontos) {
+		e.setPontos(usuario, tipo, pontos);
 	}
 	
 	
