@@ -39,6 +39,11 @@ public class Armazenamento implements ArmazenamentoInterface {
 	}
 
 	@Override
+	public Map<String, Integer> getEstruturaPontos(String usuario) {
+		return lista.get(usuario);
+	}
+	
+	@Override
 	public Set<String> getPontos(String usuario) {
 		validacaoDados(usuario);
 		Set<String> set = new HashSet<>();

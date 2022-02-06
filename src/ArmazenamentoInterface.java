@@ -1,16 +1,19 @@
+import java.util.Map;
 import java.util.Set;
 
 public interface ArmazenamentoInterface {
 	
-	public void setPontos(String usuario, String tipo);
+	void setPontos(String usuario, String tipo);
 	
-	public void setPontos(String usuario, String tipo, int pontos);
+	void setPontos(String usuario, String tipo, int pontos);
 	
-	public Set<String> getTipoPontos(String usuario);
+	Set<String> getTipoPontos(String usuario);
 	
-	public Set<String> getPontos(String usuario);
+	Map<String, Integer> getEstruturaPontos(String usuario);
 	
-	public int getPontos(String usuario, String tipo);
+	Set<String> getPontos(String usuario);
 	
-	public Set<String> getUsuarios();
+	int getPontos(String usuario, String tipo);
+	
+	Set<String> getUsuarios();
 }
