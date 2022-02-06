@@ -1,6 +1,6 @@
 import java.util.Set;
 
-public interface EstruturaKeyKeyValue {
+public interface EstruturaUsuarioTipoValor {
 	
 	public void setPontos(String usuario, String tipo);
 	
