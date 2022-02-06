@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 public class Placar {
@@ -17,6 +21,18 @@ public class Placar {
 
 	public Set<String> getPontosUsuario(String usuario) {
 		return e.getPontos(usuario);
+	}
+
+	public Object getRanking(String tipo) {
+		List<Ponto> dados =  e.getEstruturaTipo(tipo);
+		Collections.sort(dados);
+		List<String> lista = new ArrayList<>();
+		int i = 1;
+		for(Ponto p : dados) {
+			lista.add(i+"º - "+p.getUsuario()+" -> "+ p.getPonto());
+			i++;
+		}
+		return lista;
 	}
 	
 	

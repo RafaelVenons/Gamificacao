@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,6 +43,17 @@ public class Armazenamento implements ArmazenamentoInterface {
 	@Override
 	public Map<String, Integer> getEstruturaPontos(String usuario) {
 		return lista.get(usuario);
+	}
+	
+	@Override
+	public List<Ponto> getEstruturaTipo(String tipo) {
+		tipo = formata(tipo);
+		List<Ponto> l = new ArrayList<>();
+		for(String usuario : lista.keySet()) {
+			if(lista.get(usuario).containsKey(tipo))
+				l.add(new Ponto(usuario, tipo, lista.get(usuario).get(tipo)));
+		}
+		return l;
 	}
 	
 	@Override
