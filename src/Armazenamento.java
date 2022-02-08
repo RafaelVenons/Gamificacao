@@ -20,7 +20,7 @@ public class Armazenamento implements ArmazenamentoInterface {
 
 	@Override
 	public void setPontos(String usuario, String tipo, int pontos) {
-		validacaoDados(usuario, tipo, pontos);
+		Armazenamento.validacaoDados(usuario, tipo, pontos);
 		
 		usuario = formata(usuario);
 		tipo = formata(tipo);
@@ -94,10 +94,10 @@ public class Armazenamento implements ArmazenamentoInterface {
 			throw new UserException();
 	}
 	
-	private void validacaoDados(String usuario, String tipo, int pontos) {
+	public static void validacaoDados(String usuario, String tipo, int pontos) {
 		if(usuario == null || usuario.strip() == "")
 			throw new UserException();
-		if(tipo == null || tipo == "")
+		if(tipo == null || tipo.strip() == "")
 			throw new TipeException();
 		if(pontos <= 0)
 			throw new PontosException();

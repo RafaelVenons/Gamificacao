@@ -7,6 +7,7 @@ public class Ponto implements Comparable<Ponto> {
 	
 	Ponto(String usuario, String tipo, int ponto){
 		super();
+		Armazenamento.validacaoDados(usuario, tipo, ponto);
 		this.usuario = usuario;
 		this.tipo = tipo;
 		this.pontos = ponto;
@@ -37,7 +38,7 @@ public class Ponto implements Comparable<Ponto> {
 	
 	@Override
 	public String toString() {
-		return usuario + " tem " + pontos + " do tipo " + tipo;
+		return usuario + " tem " + pontos + " " + tipo + (pontos == 1 ? "" : "s");
 	}
 	
 	@Override
