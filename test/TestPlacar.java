@@ -24,11 +24,55 @@ class TestPlacar {
 		p.setPontos("guerra", "estrela");
 		e.assertEquals("guerra", "estrela", 1);
 	}
-	
+
 	@Test
 	void variosPontos() {
 		p.setPontos("guerra", "estrela", 10);
 		e.assertEquals("guerra", "estrela", 10);
+	}
+	
+	@Test
+	void errorUserException() {
+		try {
+			p.setPontos("", "estrela");
+			fail("Aceitou usuario vazio");
+		}catch (UserException e) {}
+		try {
+			p.setPontos("  ", "estrela");
+			fail("Aceitou usuario vazio");
+		}catch (UserException e) {}
+		try {
+			p.setPontos(null, "estrela");
+			fail("Aceitou usuario null");
+		}catch (UserException e) {}
+	}
+	
+	@Test
+	void errorTipeException() {
+		try {
+			p.setPontos("guerra", "");
+			fail("Aceitou tipo vazio");
+		}catch (TipeException e) {}
+		try {
+			p.setPontos("guerra", "  ");
+			fail("Aceitou tipo vazio");
+		}catch (TipeException e) {}
+		try {
+			p.setPontos("guerra", null);
+			fail("Aceitou tipo null");
+		}catch (TipeException e) {}
+	}
+
+	@Test
+	void errorPontosException() {
+		try {
+			p.setPontos("guerra", "estrela", 0);
+			fail("Aceitou pontos nulos");
+		}catch (PontosException e) {}
+		try {
+			p.setPontos("guerra", "estrela", -10);
+			fail("Aceitou pontos negativos");
+		}catch (PontosException e) {}
 	}
 	
 	@Test
